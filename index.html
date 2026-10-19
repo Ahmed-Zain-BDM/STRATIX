@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <!-- دعم الشاشات الذكية وتوافق النوتش والجزيرة التفاعلية على iOS -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -14,14 +13,14 @@
   <style>
     :root {
       --bg: #070b14;
-      --card-bg: rgba(15, 23, 42, 0.55);
-      --card-border: rgba(255, 255, 255, 0.15);
-      --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(15, 23, 42, 0.72);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --card-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
       
-      --option-bg: rgba(20, 29, 47, 0.85);
-      --option-border: rgba(255, 255, 255, 0.18);
-      --option-hover-bg: rgba(30, 41, 59, 0.95);
-      --option-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      --option-bg: #182235;
+      --option-border: rgba(255, 255, 255, 0.16);
+      --option-hover-bg: #223048;
+      --option-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
       
       --input-bg: #0b1120;
       --input-border: rgba(255, 255, 255, 0.22);
@@ -30,8 +29,8 @@
       
       --heading-color: #38bdf8;
       --heading-bg: rgba(7, 11, 20, 0.75);
-      --badge-bg: rgba(15, 23, 42, 0.88);
-      --badge-border: rgba(56, 189, 248, 0.45);
+      --badge-bg: rgba(56, 189, 248, 0.15);
+      --badge-border: rgba(56, 189, 248, 0.35);
 
       --accent: #6366f1;
       --accent-glow: rgba(99, 102, 241, 0.4);
@@ -43,15 +42,15 @@
     }
 
     body.light-mode {
-      --bg: #cbd5e1;
-      --card-bg: rgba(255, 255, 255, 0.65);
-      --card-border: rgba(255, 255, 255, 0.5);
-      --card-shadow: 0 20px 40px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.6);
+      --bg: #e2e8f0;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-border: rgba(0, 0, 0, 0.1);
+      --card-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
       
-      --option-bg: rgba(241, 245, 249, 0.9);
-      --option-border: rgba(203, 213, 225, 0.85);
-      --option-hover-bg: rgba(255, 255, 255, 0.98);
-      --option-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      --option-bg: #f1f5f9;
+      --option-border: #cbd5e1;
+      --option-hover-bg: #e2e8f0;
+      --option-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
       
       --input-bg: #ffffff;
       --input-border: #94a3b8;
@@ -60,8 +59,8 @@
       
       --heading-color: #1d4ed8;
       --heading-bg: rgba(255, 255, 255, 0.88);
-      --badge-bg: rgba(255, 255, 255, 0.92);
-      --badge-border: rgba(29, 78, 216, 0.35);
+      --badge-bg: rgba(29, 78, 216, 0.1);
+      --badge-border: rgba(29, 78, 216, 0.25);
 
       --accent: #4f46e5;
       --accent-glow: rgba(79, 70, 229, 0.2);
@@ -77,7 +76,7 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Cairo", sans-serif;
-      -webkit-tap-highlight-color: transparent; /* إلغاء الوميض الرمادي عند لمس شاشة الآيفون */
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -92,23 +91,22 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      /* احترام مساحات الآيفون الآمنة (Safe Area Insets) */
       padding-top: env(safe-area-inset-top);
       padding-bottom: env(safe-area-inset-bottom);
-      transition: color 0.25s ease;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(7, 11, 20, 0.3) 0%, rgba(7, 11, 20, 0.75) 100%);
+      background: radial-gradient(circle at center, rgba(7, 11, 20, 0.25) 0%, rgba(7, 11, 20, 0.75) 100%);
       z-index: -1;
       pointer-events: none;
     }
 
     body.light-mode::before {
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.25) 0%, rgba(203, 213, 225, 0.6) 100%);
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(203, 213, 225, 0.6) 100%);
     }
 
     #confetti-canvas {
@@ -121,60 +119,60 @@
       z-index: 9999;
     }
 
+    /* الشريط العلوي */
     header {
-      height: 64px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
-      background: rgba(15, 23, 42, 0.7);
+      padding: 0 28px;
+      background: var(--card-bg);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1.5px solid var(--card-border);
+      border-bottom: 2px solid var(--card-border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
-    body.light-mode header {
-      background: rgba(255, 255, 255, 0.75);
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
     }
 
-    .brand-container {
+    #brand-logo-img {
+      max-height: 44px;
+      max-width: 140px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--heading-color);
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    #brand-logo-img {
-      max-height: 38px;
-      max-width: 110px;
-      object-fit: contain;
-      border-radius: 6px;
-      display: block;
-    }
-
-    header h1 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--heading-color);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .header-actions {
       display: flex;
-      gap: 8px;
+      gap: 12px;
     }
 
+    /* الأزرار بكامل أبعادها وتنسيقها المكتبي الفاخر */
     button {
-      background: rgba(15, 23, 42, 0.75);
+      background: var(--card-bg);
       border: 1px solid var(--card-border);
       color: var(--text-main);
       border-radius: 12px;
-      padding: 8px 14px;
-      font-size: 0.85rem;
+      padding: 10px 18px;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       touch-action: manipulation;
@@ -182,50 +180,71 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     body.light-mode button:not(.btn-primary):not(.btn-danger) {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       color: var(--text-main);
+      border-color: #cbd5e1;
+    }
+
+    button:hover {
+      border-color: var(--heading-color);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
     }
 
     button.btn-primary {
       background: linear-gradient(135deg, var(--accent), #4338ca) !important;
       border: none !important;
       color: #ffffff !important;
-      box-shadow: 0 4px 18px var(--accent-glow);
+      box-shadow: 0 4px 18px var(--accent-glow) !important;
+    }
+
+    button.btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--accent-glow) !important;
     }
 
     button.btn-danger {
-      background: rgba(244, 63, 94, 0.2);
-      border: 1px solid rgba(244, 63, 94, 0.5);
-      color: var(--danger);
+      background: rgba(244, 63, 94, 0.15) !important;
+      border: 1px solid rgba(244, 63, 94, 0.4) !important;
+      color: var(--danger) !important;
     }
 
+    button.btn-danger:hover {
+      background: var(--danger) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 16px var(--danger-glow);
+    }
+
+    /* شبكة Bento Grid */
     .bento-container {
       flex: 1;
       max-width: 1280px;
       width: 100%;
-      margin: 16px auto;
-      padding: 0 16px;
+      margin: 24px auto;
+      padding: 0 20px;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
+      gap: 24px;
     }
 
     .bento-card {
       background: var(--card-bg);
       border: 1.5px solid var(--card-border);
       border-radius: 20px;
-      padding: 18px;
+      padding: 24px;
       box-shadow: var(--card-shadow);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       display: flex;
       flex-direction: column;
+      transition: box-shadow 0.4s ease;
     }
 
     .bento-card.alert-flash-wrong {
@@ -238,99 +257,95 @@
 
     @keyframes flashRedBorder {
       0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.6); }
-      50% { box-shadow: 0 0 30px 6px rgba(244, 63, 94, 0.5); }
+      50% { box-shadow: 0 0 35px 8px rgba(244, 63, 94, 0.4); }
       100% { box-shadow: var(--card-shadow); }
     }
 
     @keyframes flashGreenBorder {
       0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-      50% { box-shadow: 0 0 30px 6px rgba(16, 185, 129, 0.5); }
+      50% { box-shadow: 0 0 35px 8px rgba(16, 185, 129, 0.4); }
       100% { box-shadow: var(--card-shadow); }
     }
 
     .col-sidebar { grid-column: span 4; }
     .col-main { grid-column: span 8; }
 
+    /* الشارات والعناوين البارزة */
     .pill-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       padding: 6px 14px;
       border-radius: 100px;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 800;
       background: var(--badge-bg);
       color: var(--heading-color);
-      border: 1.5px solid var(--badge-border);
-      margin-bottom: 12px;
+      border: 1px solid var(--badge-border);
+      margin-bottom: 14px;
       align-self: flex-start;
       backdrop-filter: blur(12px);
     }
 
     .section-title {
-      display: inline-block;
-      font-size: 1.05rem;
-      font-weight: 900;
+      font-size: 1.15rem;
+      font-weight: 800;
       color: var(--heading-color);
-      margin-bottom: 12px;
-      padding: 4px 10px;
-      background: var(--heading-bg);
-      border-radius: 8px;
-      border-right: 4px solid var(--heading-color);
-      backdrop-filter: blur(10px);
+      margin-bottom: 14px;
+      display: inline-block;
     }
 
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
 
     .form-group label {
-      display: inline-block;
-      margin-bottom: 6px;
-      padding: 2px 8px;
-      background: var(--heading-bg);
-      border-radius: 6px;
-      font-size: 0.88rem;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
       color: var(--text-main);
       font-weight: 800;
     }
 
+    /* حقول الإدخال: مصمتة وعالية التباين */
     input, select, textarea {
       width: 100%;
       background: var(--input-bg) !important;
       color: var(--text-main) !important;
-      border: 2px solid var(--input-border) !important;
-      border-radius: 14px;
-      padding: 12px 14px;
+      border: 1.5px solid var(--card-border) !important;
+      border-radius: 12px;
+      padding: 14px 16px;
       font-size: 0.95rem;
       font-weight: 600;
       outline: none;
-      -webkit-appearance: none; /* إزالة المظهر الافتراضي لعناصر الفورم في الآيفون */
+      transition: all 0.2s ease;
+      -webkit-appearance: none;
     }
 
     input:focus, select:focus, textarea:focus {
       border-color: var(--heading-color) !important;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25) !important;
+      box-shadow: 0 0 0 3px var(--badge-bg) !important;
     }
 
     .case-list {
       list-style: none;
       overflow-y: auto;
-      max-height: 50vh;
+      max-height: 60vh;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 6px;
-      -webkit-overflow-scrolling: touch; /* تمرير ناعم ومريح على شاشة اللمس */
+      gap: 12px;
+      margin-top: 8px;
+      -webkit-overflow-scrolling: touch;
     }
 
     .case-item {
-      padding: 14px;
+      padding: 16px;
       border-radius: 14px;
       background: var(--option-bg);
       border: 1px solid var(--option-border);
       box-shadow: var(--option-shadow);
       cursor: pointer;
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -339,6 +354,7 @@
 
     .case-item:hover, .case-item.active {
       border-color: var(--heading-color);
+      transform: translateX(-4px);
       background: var(--option-hover-bg);
     }
 
@@ -349,8 +365,8 @@
 
     .case-item-title {
       font-weight: 800;
-      font-size: 0.92rem;
-      margin-bottom: 4px;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
       color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
@@ -358,43 +374,53 @@
     }
 
     .case-item-meta {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-muted);
     }
 
     .btn-delete-item {
-      background: rgba(244, 63, 94, 0.15);
-      border: 1px solid rgba(244, 63, 94, 0.3);
+      background: rgba(244, 63, 94, 0.1);
+      border: 1px solid rgba(244, 63, 94, 0.25);
       color: var(--danger);
-      padding: 6px 10px;
-      border-radius: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
       font-size: 0.85rem;
       cursor: pointer;
+      transition: all 0.2s ease;
       line-height: 1;
       flex-shrink: 0;
+    }
+
+    .btn-delete-item:hover {
+      background: var(--danger);
+      color: #ffffff;
+      border-color: var(--danger);
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px var(--danger-glow);
     }
 
     .analysis-box {
       background: var(--input-bg);
       border-right: 5px solid var(--heading-color);
-      border-radius: 16px;
-      padding: 16px;
-      font-size: 0.95rem;
-      line-height: 1.8;
+      border-radius: 14px;
+      padding: 20px;
+      font-size: 0.96rem;
+      line-height: 1.85;
       font-weight: 600;
       white-space: pre-wrap;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
       border-left: 1px solid var(--card-border);
       box-shadow: var(--option-shadow);
     }
 
+    /* بطاقات الخيارات الخمسة المستقلة والبارزة */
     .options-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .option-btn {
@@ -402,36 +428,42 @@
       color: var(--text-main);
       border: 1.5px solid var(--option-border);
       border-radius: 16px;
-      padding: 16px 18px;
-      font-size: 0.95rem;
-      line-height: 1.55;
+      padding: 18px 20px;
+      font-size: 0.98rem;
+      line-height: 1.6;
       font-weight: 600;
       cursor: pointer;
       touch-action: manipulation;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       box-shadow: var(--option-shadow);
+      position: relative;
     }
 
-    .option-btn:active {
-      transform: scale(0.98); /* تأثير ضغط لمسي احترافي على الموبايل */
+    .option-btn:hover {
+      background: var(--option-hover-bg);
+      border-color: var(--heading-color);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
     .option-num-badge {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 36px;
-      height: 36px;
+      min-width: 38px;
+      height: 38px;
       border-radius: 10px;
       background: var(--badge-bg);
       color: var(--heading-color);
       border: 1px solid var(--badge-border);
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-family: monospace;
       flex-shrink: 0;
+      transition: all 0.2s ease;
     }
 
     .option-text-content {
@@ -441,16 +473,16 @@
 
     @keyframes successBounce {
       0% { transform: scale(1); }
-      35% { transform: scale(1.03); }
+      35% { transform: scale(1.04); }
       65% { transform: scale(0.98); }
       100% { transform: scale(1); }
     }
 
     .option-btn.correct {
       border: 2px solid var(--success) !important;
-      background: rgba(16, 185, 129, 0.24) !important;
+      background: rgba(16, 185, 129, 0.22) !important;
       box-shadow: 0 8px 24px var(--success-glow) !important;
-      animation: successBounce 0.4s ease both;
+      animation: successBounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
     }
 
     .option-btn.correct .option-num-badge {
@@ -461,15 +493,15 @@
 
     @keyframes shakeCard {
       0%, 100% { transform: translateX(0); }
-      15%, 55% { transform: translateX(-8px); }
-      35%, 75% { transform: translateX(8px); }
+      15%, 55% { transform: translateX(-9px); }
+      35%, 75% { transform: translateX(9px); }
     }
 
     .option-btn.wrong {
       border: 2px solid var(--danger) !important;
-      background: rgba(244, 63, 94, 0.24) !important;
+      background: rgba(244, 63, 94, 0.22) !important;
       box-shadow: 0 8px 24px var(--danger-glow) !important;
-      animation: shakeCard 0.38s ease both;
+      animation: shakeCard 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     }
 
     .option-btn.wrong .option-num-badge {
@@ -479,16 +511,22 @@
     }
 
     .feedback-box {
-      margin-top: 18px;
-      padding: 18px;
+      margin-top: 22px;
+      padding: 22px;
       border-radius: 16px;
       background: var(--input-bg);
       border: 1.5px solid var(--card-border);
-      line-height: 1.8;
-      font-size: 0.94rem;
+      line-height: 1.85;
+      font-size: 0.96rem;
       font-weight: 600;
       white-space: pre-wrap;
+      animation: fadeInFeedback 0.35s ease-out;
       box-shadow: var(--option-shadow);
+    }
+
+    @keyframes fadeInFeedback {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .modal-backdrop {
@@ -501,7 +539,7 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      padding: 16px;
+      padding: 20px;
     }
 
     .modal-card {
@@ -509,22 +547,27 @@
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
       border: 2px solid var(--card-border);
-      border-radius: 22px;
-      padding: 24px;
-      max-width: 540px;
+      border-radius: 24px;
+      padding: 30px;
+      max-width: 620px;
       width: 100%;
-      max-height: 85vh;
+      max-height: 90vh;
       overflow-y: auto;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      animation: modalSlide 0.25s ease-out;
     }
 
-    /* تكيف كامل مع شاشات الهواتف والآيفون */
+    @keyframes modalSlide {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     @media (max-width: 920px) {
-      .bento-container { grid-template-columns: 1fr; gap: 14px; margin: 12px auto; }
+      .bento-container { grid-template-columns: 1fr; gap: 16px; }
       .col-sidebar, .col-main { grid-column: span 12; }
-      .case-list { max-height: 180px; }
-      header { padding: 0 14px; }
-      header h1 span.title-text { font-size: 0.98rem; }
+      .case-list { max-height: 200px; }
+      header { padding: 0 16px; }
+      header h1 { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -534,12 +577,12 @@
 
   <header>
     <div class="brand-container">
-      <img id="brand-logo-img" alt="Logo" />
-      <h1><span class="title-text">STRATIX // محاكي القرارات</span></h1>
+      <img id="brand-logo-img" alt="STRATIX Logo" />
+      <h1><span>محاكي التفكير المنطقي والقرارات الاستراتيجية</span></h1>
     </div>
     <div class="header-actions">
-      <button onclick="openSettingsModal()">⚙️ الـ AI</button>
-      <button id="theme-btn" onclick="toggleTheme()">☀️</button>
+      <button onclick="openSettingsModal()">⚙️ إعدادات الـ AI</button>
+      <button id="theme-btn" onclick="toggleTheme()">☀️ الوضع الفاتح</button>
     </div>
   </header>
 
@@ -547,7 +590,7 @@
     
     <!-- القائمة الجانبية -->
     <aside class="bento-card col-sidebar">
-      <button class="btn-primary" style="width: 100%; margin-bottom: 12px;" onclick="openNewCaseForm()">➕ سيناريو جديد</button>
+      <button class="btn-primary" style="width: 100%; margin-bottom: 14px;" onclick="openNewCaseForm()">➕ سيناريو / كيس جديد</button>
       <span class="pill-badge">📂 السيناريوهات المحفوظة</span>
       <ul class="case-list" id="cases-list"></ul>
     </aside>
@@ -557,49 +600,49 @@
       
       <!-- إدخال سيناريو جديد -->
       <div id="new-case-card">
-        <span class="pill-badge">📝 إنشاء قضية استراتيجية</span>
-        <h2 class="section-title">بيانات السيناريو</h2>
+        <span class="pill-badge">📝 إنشاء قضية جديدة</span>
+        <h2 class="section-title">بيانات السيناريو الاستراتيجي</h2>
         <div class="form-group">
           <label>📌 عنوان السيناريو / الكيس:</label>
           <input type="text" id="case-title" placeholder="مثال: التفاوض على صفقة توريد دولية..." />
         </div>
         <div class="form-group">
-          <label>📝 تفاصيل السيناريو والمعطيات:</label>
-          <textarea id="case-scenario" rows="5" placeholder="اشرح القضية، التعقيدات، والأطراف بالتفصيل..."></textarea>
+          <label>📝 تفاصيل السيناريو والمعطيات الأساسية:</label>
+          <textarea id="case-scenario" rows="6" placeholder="اشرح القضية، التعقيدات، والأطراف بالتفصيل..."></textarea>
         </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 10px;">
-          <button type="button" id="voice-btn" onclick="toggleSpeechRecognition('case-scenario', 'voice-btn')">🎙️ تحدث صوتياً</button>
-          <label style="padding: 8px 14px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 700; background: var(--input-bg); border: 1.5px solid var(--input-border); display: inline-flex; align-items: center; gap: 6px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 14px;">
+          <button type="button" id="voice-btn" onclick="toggleSpeechRecognition('case-scenario', 'voice-btn')">🎙️ تحويل الكلام لنص</button>
+          <label style="padding: 10px 18px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; font-weight: 700; background: var(--input-bg); border: 1.5px solid var(--input-border); display: inline-flex; align-items: center; gap: 8px;">
             📎 إرفاق ملف / صورة
             <input type="file" id="case-file" style="display: none;" onchange="handleFileAttachment(event)" />
           </label>
-          <span id="file-name-label" style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">لا يوجد مرفق</span>
+          <span id="file-name-label" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">لا يوجد مرفق</span>
           <div style="flex: 1;"></div>
-          <button type="button" class="btn-primary" id="run-case-btn" onclick="startNewCase()">🚀 Run the Case</button>
+          <button type="button" class="btn-primary" id="run-case-btn" onclick="startNewCase()">Run the Case 🚀</button>
         </div>
       </div>
 
       <!-- المرحلة النشطة والخيارات الخمسة -->
       <div id="active-stage-card" style="display: none;">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
           <span class="pill-badge" id="stage-header-title">📍 المرحلة 1</span>
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            <button type="button" id="retry-header-btn" onclick="retryCurrentExecution()" title="إعادة تشغيل الـ AI">🔄 تحديث</button>
-            <button type="button" onclick="openContextModal()">➕ معطيات جديدة</button>
-            <button type="button" class="btn-danger" onclick="deleteCurrentCase()" title="حذف نهائي">🗑️</button>
-            <button type="button" class="btn-danger" style="background: rgba(244, 63, 94, 0.25);" onclick="endCaseSummary()">🏁 إنهاء</button>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" id="retry-header-btn" onclick="retryCurrentExecution()" title="إعادة تشغيل الذكاء الاصطناعي في حال بطء أو عدم الاستجابة">🔄 تحديث / إعادة المحاولة</button>
+            <button type="button" onclick="openContextModal()">➕ إضافة معطيات جديدة</button>
+            <button type="button" class="btn-danger" onclick="deleteCurrentCase()" title="حذف هذا السيناريو بالكامل وتفريغ ذاكرته">🗑️ حذف</button>
+            <button type="button" class="btn-danger" style="background: rgba(244, 63, 94, 0.25) !important;" onclick="endCaseSummary()">🏁 إنهاء الكيس</button>
           </div>
         </div>
 
         <h3 class="section-title">🔍 التحليل المنطقي المعمق</h3>
         <div class="analysis-box" id="logical-analysis-box"></div>
 
-        <h3 class="section-title" id="options-heading">🎯 الخيارات الخمسة الذكية (خيار واحد فقط هو الأصح):</h3>
+        <h3 class="section-title" id="options-heading">🎯 الخيارات الخمسة الذكية (خيار واحد فقط هو الأصح استراتيجياً):</h3>
         <div class="options-container" id="options-container"></div>
 
         <div class="feedback-box" id="feedback-box" style="display: none;">
           <div id="feedback-text"></div>
-          <button class="btn-primary" id="next-stage-btn" style="margin-top: 16px; width: 100%;" onclick="proceedToNextStage()">➡️ اعتماد القرار ومتابعة التحليل</button>
+          <button class="btn-primary" id="next-stage-btn" style="margin-top: 18px; width: 100%;" onclick="proceedToNextStage()">➡️ اعتماد القرار الصحيح والانتقال للمرحلة التالية</button>
         </div>
       </div>
 
@@ -609,44 +652,44 @@
   <!-- نافذة إضافة معطيات وتطورات جديدة -->
   <div class="modal-backdrop" id="context-modal">
     <div class="modal-card">
-      <span class="pill-badge">🔄 حقن معطيات جديدة</span>
+      <span class="pill-badge">🔄 حقن معطيات وتطورات جديدة</span>
       <h2 class="section-title">تحديث مسار التفكير المنطقي</h2>
-      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; font-weight: 600;">
-        اكتب أو تحدث بالمعطيات الجديدة، وسيقوم النظام بإعادة بناء الخيارات فوراً:
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px; font-weight: 600;">
+        اكتب أو تحدث بالمعطيات الجديدة التي استجدت في السيناريو، وسيقوم النظام فوراً بإعادة التحليل المنطقي وبناء الخيارات الخمسة من حيث توقفنا:
       </p>
 
       <div class="form-group">
-        <textarea id="new-context-textarea" rows="6" placeholder="اكتب التطورات الجديدة أو اضغط الميكروفون بالأسفل..."></textarea>
+        <textarea id="new-context-textarea" rows="7" placeholder="اكتب التطورات الجديدة بالتفصيل أو استخدم زر الميكروفون بالأسفل..."></textarea>
       </div>
 
-      <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 16px;">
+      <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 18px;">
         <button type="button" id="context-voice-btn" onclick="toggleSpeechRecognition('new-context-textarea', 'context-voice-btn')">
-          🎙️ تسجيل صوتي مباشر
+          🎙️ تسجيل صوتي (تحويل الكلام لنص)
         </button>
       </div>
 
-      <div style="display: flex; gap: 10px;">
-        <button class="btn-primary" style="flex: 1;" onclick="submitNewContext()">🚀 حقن واستكمال السيناريو</button>
+      <div style="display: flex; gap: 12px;">
+        <button class="btn-primary" style="flex: 1;" onclick="submitNewContext()">🚀 حقن المعطيات واستكمال السيناريو</button>
         <button onclick="closeContextModal()">إلغاء</button>
       </div>
     </div>
   </div>
 
-  <!-- نافذة إعدادات مفتاح الـ API -->
+  <!-- نافذة إعدادات مفتاح الـ API فقط -->
   <div class="modal-backdrop" id="settings-modal">
     <div class="modal-card">
-      <span class="pill-badge">⚙️ ضبط المحرك</span>
+      <span class="pill-badge">⚙️ ضبط المنظومة</span>
       <h2 class="section-title">إعدادات محرك الذكاء الاصطناعي</h2>
       
       <div class="form-group">
         <label>الموديل المستخدم:</label>
         <select id="ai-model" onchange="toggleCustomModelInput()">
-          <option value="gemini|gemini-3.8-flash">Google Gemini 3.8 Flash (الأسرع والأحدث)</option>
+          <option value="gemini|gemini-3.8-flash">Google Gemini 3.8 Flash (الموصى به - أسرع وأحدث)</option>
           <option value="gemini|gemini-3.8-pro">Google Gemini 3.8 Pro (فائق العمق)</option>
           <option value="gemini|gemini-2.5-pro">Google Gemini 2.5 Pro</option>
           <option value="openai|gpt-4o">OpenAI GPT-4o</option>
           <option value="openai|gpt-4o-mini">OpenAI GPT-4o Mini</option>
-          <option value="custom">🔧 اسم موديل مخصص يدوياً...</option>
+          <option value="custom">🔧 إدخال اسم موديل مخصص يدوياً...</option>
         </select>
       </div>
 
@@ -660,7 +703,7 @@
         <input type="password" id="api-key" placeholder="AIzaSy... أو sk-..." />
       </div>
 
-      <div style="display: flex; gap: 10px; margin-top: 18px;">
+      <div style="display: flex; gap: 10px; margin-top: 22px;">
         <button class="btn-primary" style="flex: 1;" onclick="saveUserConfig()">حفظ وتفعيل</button>
         <button onclick="closeSettingsModal()">إلغاء</button>
       </div>
@@ -668,11 +711,9 @@
   </div>
 
   <script>
-    // =========================================================================
-    // 1. الأصول البرمجية المثبتة في الكود (In-Code Brand Assets)
-    // =========================================================================
-    const APP_LOGO_SRC = "logo2.png";
-    const APP_BG_SRC   = "background2.jpg";
+    // الأصول البرمجية المدمجة في الكود
+    const APP_LOGO_SRC = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80";
+    const APP_BG_SRC   = "https://images.unsplash.com/photo-1507499739999-097706ad8914?auto=format&fit=crop&w=2560&q=80";
 
     let casesDB = JSON.parse(localStorage.getItem("STRATEGIC_CASES_DB") || "[]");
     let currentCaseId = null;
@@ -712,18 +753,18 @@
 
       const particles = [];
       const colors = ["#10b981", "#38bdf8", "#6366f1", "#f59e0b", "#ec4899", "#ffffff"];
-      const totalParticles = 65;
+      const totalParticles = 75;
 
       for (let i = 0; i < totalParticles; i++) {
         particles.push({
-          x: canvas.width / 2 + (Math.random() - 0.5) * 180,
+          x: canvas.width / 2 + (Math.random() - 0.5) * 220,
           y: canvas.height * 0.45,
-          vx: (Math.random() - 0.5) * 12,
-          vy: Math.random() * -10 - 4,
-          size: Math.random() * 7 + 3,
+          vx: (Math.random() - 0.5) * 14,
+          vy: Math.random() * -11 - 4,
+          size: Math.random() * 8 + 4,
           color: colors[Math.floor(Math.random() * colors.length)],
           rotation: Math.random() * 360,
-          rotSpeed: (Math.random() - 0.5) * 10,
+          rotSpeed: (Math.random() - 0.5) * 12,
           alpha: 1,
           decay: Math.random() * 0.016 + 0.012
         });
@@ -747,7 +788,7 @@
             ctx.rotate((p.rotation * Math.PI) / 180);
             ctx.globalAlpha = Math.max(0, p.alpha);
             ctx.fillStyle = p.color;
-            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.5);
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.6);
             ctx.restore();
           }
         });
@@ -785,7 +826,7 @@
     function toggleTheme() {
       document.body.classList.toggle("light-mode");
       const isLight = document.body.classList.contains("light-mode");
-      document.getElementById("theme-btn").innerText = isLight ? "🌙" : "☀️";
+      document.getElementById("theme-btn").innerText = isLight ? "🌙 الوضع الداكن" : "☀️ الوضع الفاتح";
     }
 
     function openSettingsModal() { document.getElementById("settings-modal").style.display = "flex"; }
@@ -832,7 +873,7 @@
       const targetCase = casesDB.find(x => x.id === id);
       const title = targetCase ? targetCase.title : "هذا السيناريو";
       
-      const confirmDelete = confirm(`هل أنت متأكد من حذف السيناريو: "${title}" نهائياً؟`);
+      const confirmDelete = confirm(`هل أنت متأكد من حذف السيناريو: "${title}" نهائياً وتفريغ كافة بياناته من الذاكرة؟`);
       if (!confirmDelete) return;
 
       if (activeAbortController) {
@@ -858,7 +899,7 @@
 
     function toggleSpeechRecognition(targetTextareaId, btnId) {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SR) return alert("لتفعيل الصوت، تأكد من استخدام متصفح Safari على الآيفون وتشغيل الصلاحية.");
+      if (!SR) return alert("المتصفح الحالي لا يدعم التسجيل الصوتي المباشر.");
       
       const recognition = new SR();
       recognition.lang = "ar-AE";
@@ -866,7 +907,7 @@
       
       const btn = document.getElementById(btnId);
       const originalText = btn.innerText;
-      btn.innerText = "🔴 جاري الاستماع...";
+      btn.innerText = "🔴 جاري الاستماع وتسجيل صوتك...";
 
       recognition.onresult = (e) => {
         const transcript = e.results[0][0].transcript;
@@ -909,7 +950,7 @@
             <div class="case-item-title">${escapeHTML(c.title)}</div>
             <div class="case-item-meta">${badge} | ${c.updatedAt}</div>
           </div>
-          <button type="button" class="btn-delete-item" title="حذف نهائي" onclick="deleteCase(${c.id}, event)">
+          <button type="button" class="btn-delete-item" title="حذف نهائي وتفريغ الذاكرة" onclick="deleteCase(${c.id}, event)">
             🗑️
           </button>
         `;
@@ -1004,7 +1045,8 @@
       document.getElementById("active-stage-card").style.display = "block";
       document.getElementById("logical-analysis-box").innerHTML = 
         `<div style="display: flex; align-items: center; gap: 8px;">
-          <span>🧠 جاري التحليل المنطقي وحساب المسارات...</span>
+          <span>🧠 جاري التفكير المنطقي وتحليل المسارات الاستراتيجية...</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">(إذا تأخر الرد، يمكنك الضغط على زر التحديث بأعلى اليسار)</span>
         </div>`;
       document.getElementById("options-container").innerHTML = "";
       document.getElementById("feedback-box").style.display = "none";
@@ -1155,7 +1197,7 @@ ${caseObj.attachment && caseObj.attachment.textContent ? "\nمحتوى المل�
         return;
       }
 
-      document.getElementById("options-heading").innerText = "🎯 الخيارات الخمسة الذكية (خيار واحد فقط هو الأصح):";
+      document.getElementById("options-heading").innerText = "🎯 الخيارات الخمسة الذكية (خيار واحد فقط هو الأصح استراتيجياً):";
       (state.options || []).forEach((opt, idx) => {
         const btn = document.createElement("div");
         btn.className = "option-btn";
@@ -1193,14 +1235,14 @@ ${caseObj.attachment && caseObj.attachment.textContent ? "\nمحتوى المل�
         mainCard.classList.add("alert-flash-correct");
         triggerCelebration();
 
-        fbText.innerHTML = `<strong style="color: var(--success); font-size: 1.15rem;">🎉 قرار استراتيجي عبقري وموفق! (الخيار 0${chosenIdx + 1})</strong>\n\n` +
+        fbText.innerHTML = `<strong style="color: var(--success); font-size: 1.15rem;">🎉 قرار استراتيجي عبقري وموفق! (الخيار رقم 0${chosenIdx + 1})</strong>\n\n` +
           `💡 <strong>لماذا هذا القرار هو الأصح منطقياً:</strong>\n${escapeHTML(chosen.why_wrong_or_right)}\n\n` +
           `🚀 <strong>الأثر الاستراتيجي للمرحلة القادمة:</strong>\n${escapeHTML(state.correct_option_explanation || "")}`;
       } else {
         clickedBtn.classList.add("wrong");
         mainCard.classList.add("alert-flash-wrong");
 
-        fbText.innerHTML = `<strong style="color: var(--danger); font-size: 1.15rem;">⚠️ مسار فرعي غير أمثل! (اخترت 0${chosenIdx + 1})</strong>\n\n` +
+        fbText.innerHTML = `<strong style="color: var(--danger); font-size: 1.15rem;">⚠️ مسار فرعي غير أمثل! (اخترت الخيار رقم 0${chosenIdx + 1})</strong>\n\n` +
           `⚠️ <strong>لماذا هذا الخيار ينطوي على ثغرة استراتيجية:</strong>\n${escapeHTML(chosen.why_wrong_or_right)}\n\n` +
           `──────────────────────────────────────\n` +
           `🎯 <strong>المسار الأمثل منطقياً هو الرقم (0${correctIdx + 1}):</strong>\n«${escapeHTML(correctOpt.text)}»\n\n` +
@@ -1221,14 +1263,3 @@ ${caseObj.attachment && caseObj.attachment.textContent ? "\nمحتوى المل�
       saveDB();
       executeAIReasoning(caseObj, "NEXT_STAGE");
     }
-
-    function endCaseSummary() {
-      const caseObj = casesDB.find(x => x.id === currentCaseId);
-      if (!caseObj) return;
-      if (confirm("هل تريد إنهاء هذا السيناريو واستخراج الخلاصة التنفيذية النهائية؟")) {
-        executeAIReasoning(caseObj, "END_CASE");
-      }
-    }
-  </script>
-</body>
-</html>
