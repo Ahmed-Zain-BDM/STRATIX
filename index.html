@@ -1263,3 +1263,14 @@ ${caseObj.attachment && caseObj.attachment.textContent ? "\nمحتوى المل�
       saveDB();
       executeAIReasoning(caseObj, "NEXT_STAGE");
     }
+
+    function endCaseSummary() {
+      const caseObj = casesDB.find(x => x.id === currentCaseId);
+      if (!caseObj) return;
+      if (confirm("هل تريد إنهاء هذا السيناريو واستخراج الخلاصة التنفيذية النهائية؟")) {
+        executeAIReasoning(caseObj, "END_CASE");
+      }
+    }
+  </script>
+</body>
+</html>
